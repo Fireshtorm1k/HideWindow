@@ -73,7 +73,7 @@ int main()
             {
                 
                 wprintf(L"%p\n", hwndVec[i]);
-                ShowWindow(hwndVec[i], SW_SHOW);
+                ShowWindow(hwndVec[i], SW_HIDE);
             }
         }
 
