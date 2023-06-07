@@ -59,7 +59,7 @@ void getAllWindowHandlesByPyPidsVec(const std::vector<DWORD>* pidsVec, std::vect
 
 int main()
 {
-    LPCWSTR lpczProcName = L"Telegram.exe";
+    LPCWSTR lpczProcName = L"YourApp.exe";
     std::vector<DWORD> pidsVec{}; 
     std::vector<HWND> hwndVec{}; 
 
@@ -73,7 +73,7 @@ int main()
             {
                 
                 wprintf(L"%p\n", hwndVec[i]);
-                ShowWindow(hwndVec[i], SW_HIDE);
+                HideWindow(hwndVec[i], SW_HIDE);
             }
         }
 
