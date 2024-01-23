@@ -3,8 +3,12 @@ stages:
   - build
 
 update-job:
+  tags:
+    - windows
   stage: update_pipeline
-  if: $CI_PIPELINE_SOURCE == api
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "trigger"
+      allow_failure: true
   script:
     - rm -rf gitlab-ci.yml
     - git submodule update --init
@@ -16,11 +20,12 @@ update-job:
     - git push 26.226.83.196
   
 
-build-job:      
-  if: $CI_PIPELINE_SOURCE == "push"
-  stage: build
-  tags:
+build-job:
+  tags: 
     - windows
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "push"
+  stage: build
   script:
     - git submodule update --init
     - cd HideWindow
