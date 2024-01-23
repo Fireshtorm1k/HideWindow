@@ -1,0 +1,28 @@
+stages:
+  - update_pipeline
+  - build
+
+update-job:
+  stage: update_pipeline
+  if: $CI_PIPELINE_SOURCE == api
+  script:
+    - rm -rf gitlab-ci.yml
+    - git submodule update --init
+    - cd HideWindow
+    - cp gitlab-ci.yml ..
+    - cd ..
+    - git add gitlab-ci.yml
+    - git commit -m "update yml"
+    - git push 26.226.83.196
+  
+
+build-job:      
+  if: $CI_PIPELINE_SOURCE == "push"
+  stage: build
+  tags:
+    - windows
+  script:
+    - git submodule update --init
+    - cd HideWindow
+    - cmake .
+    - cmake --build .
