@@ -9,9 +9,9 @@ update-job:
   tags:
     - windows
   stage: update_pipeline
+  allow_failure: true
   rules:
     - if: $CI_PIPELINE_SOURCE == "trigger"
-      allow_failure: true
   variables:
      GIT_SUBMODULE_STRATEGY: recursive
      GIT_SUBMODULE_UPDATE_FLAGS: --remote
