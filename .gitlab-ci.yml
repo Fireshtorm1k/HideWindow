@@ -26,8 +26,6 @@ build-job:
   tags: 
     - windows
   rules:
-    - if: $CI_PIPELINE_SOURCE == "push"
-    - if: $CI_PIPELINE_SOURCE != "push"
       when: on_failure
   variables:
      GIT_SUBMODULE_STRATEGY: recursive
