@@ -14,7 +14,6 @@ update-job:
      GIT_SUBMODULE_UPDATE_FLAGS: --remote
   script:
     - rm .gitlab-ci.yml
-    - git submodule update --init --force --remote
     - cd HideWindow
     - cp .gitlab-ci.yml ..
     - cd ..
@@ -28,7 +27,6 @@ build-job:
     - windows
   rules:
     - if: $CI_PIPELINE_SOURCE == "push"
-      when: on_success
     - if: $CI_PIPELINE_SOURCE != "push"
       when: on_failure
   variables:
@@ -36,7 +34,6 @@ build-job:
      GIT_SUBMODULE_UPDATE_FLAGS: --remote
   stage: build
   script:
-    - git submodule update --init
     - cd HideWindow
     - cmake .
     - cmake --build .
