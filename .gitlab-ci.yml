@@ -32,7 +32,7 @@ build-job:
   tags: 
     - windows
   rules:
-      - if: $isYmlUpdated == "true"
+      - if: $isYmlUpdated == "true" || $CI_PIPELINE_SOURCE == "push"
   variables:
      GIT_SUBMODULE_STRATEGY: recursive
      GIT_SUBMODULE_UPDATE_FLAGS: --remote
