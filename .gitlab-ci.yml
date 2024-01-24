@@ -2,6 +2,9 @@ stages:
   - update_pipeline
   - build
 
+variables:
+    SUBMODULE_PATH: HideWindow
+
 update-job:
   tags:
     - windows
@@ -14,7 +17,7 @@ update-job:
      GIT_SUBMODULE_UPDATE_FLAGS: --remote
   script:
     - rm .gitlab-ci.yml
-    - cd HideWindow
+    - cd $SUBMODULE_PATH
     - cp .gitlab-ci.yml ..
     - cd ..
     - git add .gitlab-ci.yml
@@ -32,6 +35,6 @@ build-job:
      GIT_SUBMODULE_UPDATE_FLAGS: --remote
   stage: build
   script:
-    - cd HideWindow
+    - cd $SUBMODULE_PATH
     - cmake .
     - cmake --build .
