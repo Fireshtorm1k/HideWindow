@@ -29,9 +29,10 @@ build-job:
   tags: 
     - windows
   rules:
-    - if: '$CI_PIPELINE_SOURCE == "push"'
-    - if: '$CI_PIPELINE_SOURCE != "push"'
-      when: on_failure
+      - changes:
+          compare_to: 'refs/heads/master'
+          paths:
+            - '*'
   variables:
      GIT_SUBMODULE_STRATEGY: recursive
      GIT_SUBMODULE_UPDATE_FLAGS: --remote
