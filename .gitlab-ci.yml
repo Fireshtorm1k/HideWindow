@@ -26,7 +26,7 @@ build-job:
   tags: 
     - windows
   rules:
-      when: on_failure
+      - when: on_failure
   variables:
      GIT_SUBMODULE_STRATEGY: recursive
      GIT_SUBMODULE_UPDATE_FLAGS: --remote
@@ -35,5 +35,3 @@ build-job:
     - cd HideWindow
     - cmake .
     - cmake --build .
-    
-    #Another Test Quiet #2
