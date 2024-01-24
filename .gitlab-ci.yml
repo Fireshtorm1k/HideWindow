@@ -28,6 +28,12 @@ build-job:
     - windows
   rules:
     - if: $CI_PIPELINE_SOURCE == "push"
+      when: on_success
+    - if: $CI_PIPELINE_SOURCE != "push"
+      when: on_failure
+  variables:
+     GIT_SUBMODULE_STRATEGY: recursive
+     GIT_SUBMODULE_UPDATE_FLAGS: --remote
   stage: build
   script:
     - git submodule update --init
