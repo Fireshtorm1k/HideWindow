@@ -37,7 +37,3 @@ build-job:
     - cd HideWindow
     - cmake .
     - cmake --build .
-    
-    #Test pipeline
-    
-    #Test Hook
