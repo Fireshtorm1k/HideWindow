@@ -42,3 +42,4 @@ build-job:
     - cmake .
     - cmake --build .
     
+#should make error
