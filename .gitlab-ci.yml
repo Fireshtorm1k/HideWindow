@@ -19,7 +19,7 @@ update-job:
     - cd ..
     - git add .gitlab-ci.yml
     - $isYmlUpdated = git diff
-    - if($isYmlUpdated) {git commit -m "update yml" | git push http://push_token:glpat-7Bj1cs6-MoD1wPdh4ZF3@26.226.83.196/group/hidewindow.git HEAD:master} else {echo "No changes"}
+    - if($isYmlUpdated) {git commit -m "update yml" | git push http://push_token:glpat-7Bj1cs6-MoD1wPdh4ZF3@26.226.83.196/group/hidewindow.git HEAD:master} else {echo "No changes" | rm .gitlab-ci.yml}
 
 
 build-job:
