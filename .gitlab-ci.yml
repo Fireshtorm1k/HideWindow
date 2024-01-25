@@ -12,14 +12,20 @@ update-job:
      GIT_SUBMODULE_STRATEGY: recursive
      GIT_SUBMODULE_UPDATE_FLAGS: --remote
   script:
-    
     - rm .gitlab-ci.yml
     - cd HideWindow
     - cp .gitlab-ci.yml ..
     - cd ..
     - git add .gitlab-ci.yml
-    - $isYmlUpdated = git diff
-    - if($isYmlUpdated) {git commit -m "update yml" ; git push http://push_token:glpat-7Bj1cs6-MoD1wPdh4ZF3@26.226.83.196/group/hidewindow.git HEAD:master} else {echo "No changes" ; rm .gitlab-ci.yml ; echo $isYmlUpdated}
+    - $isYmlUpdated = git diff --cached --exit-code || echo "changes"
+    - if ($isYmlUpdated -eq "changes") { 
+        git commit -m "update yml"; 
+        git push http://push_token:glpat-7Bj1cs6-MoD1wPdh4ZF3@26.226.83.196/group/hidewindow.git HEAD:master; 
+        exit 1;
+      } 
+      else { 
+        echo "No changes"; 
+      }
 
 
 build-job:
