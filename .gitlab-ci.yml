@@ -28,18 +28,29 @@ update-job:
       }
 
 
-build-job:
+build-windows-job:
+  stage: build
   tags: 
     - windows
-  rules:
-      - when: on_success
   variables:
      GIT_SUBMODULE_STRATEGY: recursive
      GIT_SUBMODULE_UPDATE_FLAGS: --remote
-  stage: build
+  
   script:
     - cd HideWindow
     - cmake .
     - cmake --build .
-    
-#should make error
+
+build-linux-job:
+  tags:
+    - linux
+  stage: build
+  variables:
+     GIT_SUBMODULE_STRATEGY: recursive
+     GIT_SUBMODULE_UPDATE_FLAGS: --remote
+  
+  script:
+    - cd HideWindow
+    - cmake .
+    - cmake --build .
+
