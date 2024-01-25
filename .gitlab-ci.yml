@@ -48,6 +48,3 @@ build-linux-job:
     - cd HideWindow
     - cmake .
     - cmake --build .
-
-#delete
-#delete
