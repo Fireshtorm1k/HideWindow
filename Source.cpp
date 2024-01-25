@@ -5,7 +5,7 @@ int main()
     std::cout << "Auto Git Hook Success"<< '\n';
 	std::cout << "Doing A + B" << '\n';
 	int a = 5;
-	int b = 50;
+	int b = 55;
 	std::cout << a+b;
     return 0;
 }
