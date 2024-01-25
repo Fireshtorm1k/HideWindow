@@ -54,3 +54,4 @@ build-linux-job:
     - cmake .
     - cmake --build .
 
+#Should make error
